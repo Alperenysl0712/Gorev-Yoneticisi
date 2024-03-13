@@ -1,0 +1,30 @@
+1) GorevYoneticisi.backpac adlı dosyayı MSSQL server için Import Data-tier application seçeneği ile Database adı GorevYoneticisi olacak şeklide ekleyiniz.
+2) Kullandığını Server localhost ise (1 tane server varsa) direkt çalıştırabilirsiniz.
+3) Birden fazla server var ise database dosyasını ekledikten sonra appsetting.json dosyasından server adını kullandığınız server ile değiştirmelisiniz.
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=YOURSERVERNAME;Database=GorevYoneticisi;Trusted_Connection=True;TrustServerCertificate=True"
+},
+
+4) Rapor eklemek için öncelikle kullanıcı oluşturmalısınız. Veritabanına kaydettikten sonra tekrar oluşturmanıza gerek yok.
+5) JWT Token biliginizi görüntülemek için giriş yapmalısınız.
+6) Giriş yaptıktan sonra JWT ile şifrelenmiş Token adresinizi göreceksiniz.
+7) Rapor işlevlerini kullanmak için bu Token adresini POSTMAN de Headers kısımına Authorization => Bearer Token yazmalısnız.
+8) Her kapat aç yapıldığında Token bilgileriniz değişecek bu yüzden tekrar giriş yapmalısınız.
+9) Token adresinizi yazdıktan sonra gerekli parametreleri girerek (Swagger ile kontrol edebilirsiniz) işleminizi yapabilirsiniz.
+
+İşlevler
+
+CreateNewUser : Yeni Kullanıcı ekleme.
+LoginUser : Token bilgileri için giriş işlevi.
+AddNewReport (Token gerekli) : Yeni rapor ekleme
+GetReportsByCategory : Kategörilere göre raporları gösterme.
+GetReportsByCalendar : En yakın tarihten başlayarak raporları gösterme. 
+GetReportsByPriorityLevel : Öncelik Seviyesine göre raporları gösterme.
+GetReportsByMonths : Aylara göre raporları gösterme.
+GetReportsBySatatus : Durumuna göre raporları gösterme. (Active, Abandoned, Complete)
+GetReportsByYears : Yıllara göre raporları gösterme.
+DeleteReportById : Rapor ID'ye göre raporu silme.
+DeleteAllReports : Bütün raporları silme.
+
+
